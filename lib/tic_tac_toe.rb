@@ -34,14 +34,14 @@ class TicTacToe
   end
   
   def valid_move?(board, index)
-    index.between?(0,8) && !position_taken?(board, index)
+    index.between?(0,8) && !position_taken?(index)
   end
   
   def won?(board)
     WIN_COMBINATIONS.detect do |combo|
-      board[combo[0]] == board[combo[1]] &&
-      board[combo[1]] == board[combo[2]] &&
-      position_taken?(board, combo[0])
+      @board[combo[0]] == @board[combo[1]] &&
+      @board[combo[1]] == @board[combo[2]] &&
+      position_taken?(combo[0])
     end
   end
   
@@ -50,11 +50,11 @@ class TicTacToe
   end
   
   def draw?
-    !won?(board) && full?(board)
+    !won? && full?
   end
   
   def over?
-    won?(board) || draw?(board)
+    won? || draw?
   end
   
   def input_to_index(user_input)
@@ -78,7 +78,7 @@ class TicTacToe
   end
   
   def current_player(board)
-    turn_count(board) % 2 == 0 ? "X" : "O"
+    turn_count % 2 == 0 ? "X" : "O"
   end
   
   def turn_count(board)
