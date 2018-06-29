@@ -71,6 +71,7 @@ class TicTacToe
     else
       turn(board)
     end
+    display_board()
   end
   
   def position_taken?(board, index)
