@@ -67,14 +67,13 @@ class TicTacToe
     index = input_to_index(user_input)
     if valid_move?(index)
       move(index, current_player)
-      
     else
-      turn(board)
+      turn
     end
-    display_board()
+    display_board
   end
   
-  def position_taken?(board, index)
+  def position_taken?(index)
     board[index]== "X" || board[index] == "O"
   end
   
